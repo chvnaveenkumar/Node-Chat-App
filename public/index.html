@@ -8,27 +8,18 @@
 </head>
 <body>
     <p> Welcome to chat app!!</p>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-        socket.on('connect',() =>{
-            console.log('Connected to Server');
-        });
-       
-        socket.emit('createMessage', {
-            from: 'Client',
-            text:'Message from the client',
-            createdAt: 2222222
-        });
-       
-        socket.on('newMessage', (message) =>{
-            console.log('message from the server',message);
-        });
+    
+    <ol id="messages"> </ol>
 
-        
-        socket.on('disconnect',() => {
-            console.log('Disconnected from the server');
-        });
-    </script>
+    <form id="message-form">
+        <input type="text" name="message" placeholder="Message"/>
+        <button>Send</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>
