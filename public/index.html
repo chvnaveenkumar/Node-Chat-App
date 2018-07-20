@@ -8,5 +8,27 @@
 </head>
 <body>
     <p> Welcome to chat app!!</p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('connect',() =>{
+            console.log('Connected to Server');
+        });
+       
+        socket.emit('createMessage', {
+            from: 'Client',
+            text:'Message from the client',
+            createdAt: 2222222
+        });
+       
+        socket.on('newMessage', (message) =>{
+            console.log('message from the server',message);
+        });
+
+        
+        socket.on('disconnect',() => {
+            console.log('Disconnected from the server');
+        });
+    </script>
 </body>
 </html>
